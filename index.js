@@ -112,7 +112,7 @@ const toyyibPay = {
       accountNo,
       accountHolderName,
       registrationNo,
-      package,
+      package: thePackage, // kecoh pulak reserve keyword ni
       following
     } = options;
 
@@ -130,7 +130,7 @@ const toyyibPay = {
           accountNo: accountNo || "",
           accountHolderName: accountHolderName || "",
           registrationNo: registrationNo || "",
-          package: package || "",
+          package: thePackage || "",
           following: following || ""
         }
       });
