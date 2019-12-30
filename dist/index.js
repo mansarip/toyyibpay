@@ -1,61 +1,47 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-function _instanceof(left, right) {
-  if (
-    right != null &&
-    typeof Symbol !== "undefined" &&
-    right[Symbol.hasInstance]
-  ) {
-    return !!right[Symbol.hasInstance](left);
-  } else {
-    return left instanceof right;
-  }
-}
-
-function _classCallCheck(instance, Constructor) {
-  if (!_instanceof(instance, Constructor)) {
-    throw new TypeError("Cannot call a class as a function");
-  }
-}
-
-function _defineProperties(target, props) {
-  for (var i = 0; i < props.length; i++) {
-    var descriptor = props[i];
-    descriptor.enumerable = descriptor.enumerable || false;
-    descriptor.configurable = true;
-    if ("value" in descriptor) descriptor.writable = true;
-    Object.defineProperty(target, descriptor.key, descriptor);
-  }
-}
-
-function _createClass(Constructor, protoProps, staticProps) {
-  if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-  if (staticProps) _defineProperties(Constructor, staticProps);
-  return Constructor;
-}
-
-var ToyyibPay =
-  /*#__PURE__*/
-  (function() {
-    function ToyyibPay() {
-      _classCallCheck(this, ToyyibPay);
-    }
-
-    _createClass(ToyyibPay, [
-      {
-        key: "whoami",
-        value: async function whoami() {
-          return "sample hoho";
-        }
-      }
-    ]);
-
-    return ToyyibPay;
-  })();
-
-exports.default = ToyyibPay;
+"use strict";function ownKeys(a,b){var c=Object.keys(a);if(Object.getOwnPropertySymbols){var d=Object.getOwnPropertySymbols(a);b&&(d=d.filter(function(b){return Object.getOwnPropertyDescriptor(a,b).enumerable})),c.push.apply(c,d)}return c}function _objectSpread(a){for(var b,c=1;c<arguments.length;c++)b=null==arguments[c]?{}:arguments[c],c%2?ownKeys(Object(b),!0).forEach(function(c){_defineProperty(a,c,b[c])}):Object.getOwnPropertyDescriptors?Object.defineProperties(a,Object.getOwnPropertyDescriptors(b)):ownKeys(Object(b)).forEach(function(c){Object.defineProperty(a,c,Object.getOwnPropertyDescriptor(b,c))});return a}function _defineProperty(a,b,c){return b in a?Object.defineProperty(a,b,{value:c,enumerable:!0,configurable:!0,writable:!0}):a[b]=c,a}function asyncGeneratorStep(a,b,c,d,e,f,g){try{var h=a[f](g),i=h.value}catch(a){return void c(a)}h.done?b(i):Promise.resolve(i).then(d,e)}function _asyncToGenerator(a){return function(){var b=this,c=arguments;return new Promise(function(d,e){function f(a){asyncGeneratorStep(h,d,e,f,g,"next",a)}function g(a){asyncGeneratorStep(h,d,e,f,g,"throw",a)}var h=a.apply(b,c);f(void 0)})}}/**
+ * Bismillah Arrahman Arrahim
+ * Author: Luqman B Shariffudin (Man Sarip) twitter: luqmanrasa
+ */var axios=require("axios"),toyyibPay=_defineProperty({/**
+   * Get Bank API is useful for you to get bank information which are accepted to be used with Toyyibpay. Bank information is required when you create a user from API. Ref: https://toyyibpay.com/apireference/#gb
+   * @param {object} options - Options
+   * @param {boolean} options.dev - Tentukan endpoint domain. Jika 'true', maka library akan connect dengan 'dev.toyyibpay.com'. jika 'false', library ini akan connect dengan production 'toyyibpay.com'. (Default = 'false')
+   * @returns {array} Bank information in JSON format.
+   */getBank:function(){var a=_asyncToGenerator(/*#__PURE__*/regeneratorRuntime.mark(function a(){var b,c,d,e=arguments;return regeneratorRuntime.wrap(function(a){for(;;)switch(a.prev=a.next){case 0:return b=0<e.length&&void 0!==e[0]?e[0]:{},c=b.dev,a.prev=2,a.next=5,axios({method:"get",url:baseUrl(c)+"/getBank"});case 5:return d=a.sent,a.abrupt("return",d.data);case 9:return a.prev=9,a.t0=a["catch"](2),a.abrupt("return","Error: Unable to get bank list (".concat(properErrorMessage(a.t0),")"));case 12:case"end":return a.stop();}},a,null,[[2,9]])}));return function getBank(){return a.apply(this,arguments)}}(),/**
+   * Get Bank FPX API is useful for you to get bank code which are accepted to be used with Toyyibpay. Bank code is required when you need to use runBill API. Ref: https://toyyibpay.com/apireference/#gbf
+   * @param {object} options - Options
+   * @param {boolean} options.dev - Tentukan endpoint domain. Jika 'true', maka library akan connect dengan 'dev.toyyibpay.com'. jika 'false', library ini akan connect dengan production 'toyyibpay.com'. (Default = 'false')
+   * @param {boolean} options.withStatus - Dapatkan status bank dalam dedicated key. (Default = 'false')
+   * @returns {array} Bank information in JSON format.
+   */getBankFPX:function(){var a=_asyncToGenerator(/*#__PURE__*/regeneratorRuntime.mark(function a(){var b,c,d,e,f,g,h,i,j,k,l,m=arguments;return regeneratorRuntime.wrap(function(a){for(;;)switch(a.prev=a.next){case 0:return b=0<m.length&&void 0!==m[0]?m[0]:{},c=b.dev,d=b.withStatus,a.prev=2,a.next=5,axios({method:"get",url:baseUrl(c)+"/getBankFPX"});case 5:if(e=a.sent,!0!==d){a.next=28;break}for(f=[],g=!0,h=!1,i=void 0,a.prev=11,j=e.data[Symbol.iterator]();!(g=(k=j.next()).done);g=!0)l=k.value,l.NAME.match("(Offline)")?f.push(_objectSpread({},l,{STATUS:"OFFLINE",IS_ONLINE:!1})):f.push(_objectSpread({},l,{STATUS:"ONLINE",IS_ONLINE:!0}));a.next=19;break;case 15:a.prev=15,a.t0=a["catch"](11),h=!0,i=a.t0;case 19:a.prev=19,a.prev=20,g||null==j["return"]||j["return"]();case 22:if(a.prev=22,!h){a.next=25;break}throw i;case 25:return a.finish(22);case 26:return a.finish(19);case 27:return a.abrupt("return",f);case 28:return a.abrupt("return",e.data);case 31:return a.prev=31,a.t1=a["catch"](2),a.abrupt("return","Error: Unable to get bank fpx list (".concat(properErrorMessage(a.t1),")"));case 34:case"end":return a.stop();}},a,null,[[2,31],[11,15,19,27],[20,,22,26]])}));return function getBankFPX(){return a.apply(this,arguments)}}(),/**
+   * Get Package API is useful for you to get package information which are provided in Toyyibpay. Package information is required when you create a user from API. Ref: https://toyyibpay.com/apireference/#gp
+   * @param {object} options - Options
+   * @param {boolean} options.dev - Tentukan endpoint domain. Jika 'true', maka library akan connect dengan 'dev.toyyibpay.com'. jika 'false', library ini akan connect dengan production 'toyyibpay.com'. (Default = 'false')
+   * @returns {array} Package information in JSON format.
+   */getPackage:function(){var a=_asyncToGenerator(/*#__PURE__*/regeneratorRuntime.mark(function a(){var b,c,d,e=arguments;return regeneratorRuntime.wrap(function(a){for(;;)switch(a.prev=a.next){case 0:return b=0<e.length&&void 0!==e[0]?e[0]:{},c=b.dev,a.prev=2,a.next=5,axios({method:"get",url:baseUrl(c)+"/getPackage"});case 5:return d=a.sent,a.abrupt("return",d.data);case 9:return a.prev=9,a.t0=a["catch"](2),a.abrupt("return","Error: Unable to get package list (".concat(properErrorMessage(a.t0),")"));case 12:case"end":return a.stop();}},a,null,[[2,9]])}));return function getPackage(){return a.apply(this,arguments)}}(),/**
+   * (For Enterprise Account Only) This API will show how to create Toyyibpay user from API. This API will return User Secret Key which later will be used for creating Category and Bill. Ref: https://toyyibpay.com/apireference/#cu
+   * @param {object} options - Options
+   * @param {boolean} options.dev - Tentukan endpoint domain. Jika 'true', maka library akan connect dengan 'dev.toyyibpay.com'. jika 'false', library ini akan connect dengan production 'toyyibpay.com'. (Default = 'false')
+   * @param {string} options.fullname - User full name
+   * @param {string} options.user name - User name to access or login
+   * @param {string} options.email - User Email OR User Id (not necessary in email format)
+   * @param {string} options.password - User Password
+   * @param {string} options.phone - User Phone
+   * @param {string} options.bank - User Bank Selection
+   * @param {string} options.accountNo - User Bank Account No
+   * @param {string} options.accountHolderName - User Account Holder Name
+   * @param {string} options.registrationNo - User Company / Business / Organization Registration No
+   * @param {string} options.package - User Package
+   * @param {string} options.following - Enterprise User Secret Key
+   * @returns {array} User Secret Key in JSON format. It will return error if the email already exist.
+   */createUser:function(){var a=_asyncToGenerator(/*#__PURE__*/regeneratorRuntime.mark(function a(){var b,c,d,e,f,g,h,i,j,k,l,m,n,o,p=arguments;return regeneratorRuntime.wrap(function(a){for(;;)switch(a.prev=a.next){case 0:return b=0<p.length&&void 0!==p[0]?p[0]:{},c=b.dev,d=b.fullname,e=b.username,f=b.email,g=b.password,h=b.phone,i=b.bank,j=b.accountNo,k=b.accountHolderName,l=b.registrationNo,m=b["package"],n=b.following,a.prev=2,a.next=5,axios({method:"post",url:baseUrl(c)+"/createAccount",data:{fullname:d||"",username:e||"",email:f||"",password:g||"",phone:h||"",bank:i||"",accountNo:j||"",accountHolderName:k||"",registrationNo:l||"",package:m||"",following:n||""}});case 5:return o=a.sent,a.abrupt("return",o.data);case 9:return a.prev=9,a.t0=a["catch"](2),a.abrupt("return","Error: Unable to create user (".concat(properErrorMessage(a.t0),")"));case 12:case"end":return a.stop();}},a,null,[[2,9]])}));return function createUser(){return a.apply(this,arguments)}}(),/**
+   * (For Enterprise Account Only) You may check user account status by submitting user email and enterprise user secret key. Ref: https://toyyibpay.com/apireference/#gus
+   * @param {object} options - Options
+   * @param {boolean} options.dev - Tentukan endpoint domain. Jika 'true', maka library akan connect dengan 'dev.toyyibpay.com'. jika 'false', library ini akan connect dengan production 'toyyibpay.com'. (Default = 'false')
+   * @param {string} options.username - Username
+   * @param {string} options.enterpriseUserSecretKey - Enterprise user secret key
+   * @returns {array} User information.
+   */getUserStatus:function(){var a=_asyncToGenerator(/*#__PURE__*/regeneratorRuntime.mark(function a(){var b,c,d,e,f,g,h,i,j=arguments;return regeneratorRuntime.wrap(function(a){for(;;)switch(a.prev=a.next){case 0:return b=0<j.length&&void 0!==j[0]?j[0]:{},c=b.dev,d=b.username,e=b.enterpriseUserSecretKey,a.prev=2,a.next=5,axios({method:"post",url:baseUrl(c)+"/getUserStatus",data:{username:d||"",enterpriseUserSecretKey:e||""}});case 5:if(f=a.sent,!(0<f.data.length)){a.next=11;break}return g={0:"Inactive",1:"New-Pending Approval",2:"Active"},h=f.data[0],i=f.data[0].status,a.abrupt("return",[_objectSpread({},h,{description:g[i]})]);case 11:return a.abrupt("return",f.data);case 14:return a.prev=14,a.t0=a["catch"](2),a.abrupt("return","Error: Unable to get user status (".concat(properErrorMessage(a.t0),")"));case 17:case"end":return a.stop();}},a,null,[[2,14]])}));return function getUserStatus(){return a.apply(this,arguments)}}()},"getUserStatus",function(){var a=_asyncToGenerator(/*#__PURE__*/regeneratorRuntime.mark(function a(){var b,c,d,e,f,g=arguments;return regeneratorRuntime.wrap(function(a){for(;;)switch(a.prev=a.next){case 0:return b=0<g.length&&void 0!==g[0]?g[0]:{},c=b.dev,d=b.userSecretKey,e=b.partnerType,a.prev=2,a.next=5,axios({method:"post",url:baseUrl(c)+"/getUserStatus",data:{userSecretKey:d||"",partnerType:e||""}});case 5:return f=a.sent,a.abrupt("return",f.data);case 9:return a.prev=9,a.t0=a["catch"](2),a.abrupt("return","Error: Unable to get all user info (".concat(properErrorMessage(a.t0),")"));case 12:case"end":return a.stop();}},a,null,[[2,9]])}));return function getUserStatus(){return a.apply(this,arguments)}}());function baseUrl(a){var b=a?"https://dev.toyyibpay.com":"https://toyyibpay.com";return b+="/index.php/api",b}function properErrorMessage(a){// toyyibPay tak return proper error message :(
+// jadi kita stick pada error code saja lah dulu.
+// sebenarnya ada, tapi toyyibPay bagi "\t\t\t\t" sahaja. Hmm? Come on team toyyib ;)
+// return e.response ? e.response.data : e.message;
+return a.message}toyyibPay.getBank({dev:!0,fullname:"Luqman"}).then(function(a){return console.log(a)});
