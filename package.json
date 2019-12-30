@@ -1,0 +1,26 @@
+{
+  "name": "toyyibpay",
+  "version": "1.0.0",
+  "description": "ToyyibPay Client for JavaScript",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mansarip/toyyibpay.git"
+  },
+  "keywords": [
+    "toyyib",
+    "toyyibpay"
+  ],
+  "author": "Man Sarip",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mansarip/toyyibpay/issues"
+  },
+  "homepage": "https://github.com/mansarip/toyyibpay#readme",
+  "dependencies": {
+    "axios": "^0.19.0"
+  }
+}
